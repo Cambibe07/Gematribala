@@ -3,273 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My English Gematria - VIBRATION</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <title>Gematria The Cipher - Sacred Alchemy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --bg: #ffffff;
-            --ink: #000000;
-            --border: #e0e0e0;
-            --highlight: #000000;
+            --gold: #b8860b;
+            --ink: #1a1a1b;
+            --parchment: #fdfcf0;
+            --shadow: rgba(0, 0, 0, 0.1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--parchment);
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
             color: var(--ink);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px 10px; 
-        }
-
-        /* Họa tiết nền */
-        body::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle, #d0d0d0 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.3;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .sacred-seal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 80vmin;
-            height: 80vmin;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sigillum_Dei_Aemeth.svg/1024px-Sigillum_Dei_Aemeth.svg.png') no-repeat center;
-            background-size: contain;
-            opacity: 0.04;
-            transform: translate(-50%, -50%);
-            animation: rotateSeal 120s linear infinite;
-            z-index: -1;
-            pointer-events: none;
-            filter: grayscale(100%) contrast(150%);
-        }
-
-        @keyframes rotateSeal {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            padding: 15px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 850px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border: 1px solid var(--ink);
-            box-shadow: 15px 15px 0px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            padding: clamp(20px, 5vw, 30px);
+            border: 1px solid #e0d9b5;
+            box-shadow: 0 10px 30px var(--shadow);
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            overflow: hidden;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--ink);
-            padding-bottom: 10px;
-            width: 100%;
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%; width: 120%; height: 120%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sigillum_Dei_Aemeth.svg/1024px-Sigillum_Dei_Aemeth.svg.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.03;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
         }
+
+        .content-wrap { position: relative; z-index: 1; }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin: 0;
-            font-weight: 600;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            text-align: center;
+            letter-spacing: 4px;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 8px;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 5px;
         }
 
         .subtitle {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-top: 5px;
-            font-weight: 600;
+            text-align: center;
             font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* --- Grid System 13 Cột --- */
-        .grid-wrapper {
-            width: 100%;
-            overflow-x: auto; /* Cho phép cuộn ngang trên mobile để giữ bố cục */
-            margin-bottom: 20px;
-            padding-bottom: 5px; /* Cho thanh cuộn nếu có */
-        }
-
-        .grid-system {
+        .cipher-grid {
             display: grid;
-            /* CỐ ĐỊNH 13 CỘT */
-            grid-template-columns: repeat(13, 1fr); 
-            gap: -1px; /* Viền chồng lên nhau */
-            border: 1px solid var(--border);
-            min-width: 600px; /* Đảm bảo không bị co quá nhỏ, sẽ hiện thanh cuộn trên mobile */
-        }
-
-        .cell {
-            border: 1px solid var(--border);
-            height: 65px; /* Chiều cao cố định */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            background: #fff;
-        }
-
-        .cell.active {
-            background: var(--ink);
-            color: var(--bg);
-            border-color: var(--ink);
-            z-index: 10;
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .cell span.char { font-family: 'Cinzel', serif; font-weight: 600; font-size: 1.1rem; }
-        .cell span.val { font-size: 0.7rem; margin-top: 2px; opacity: 0.6; }
-        .cell.active span.val { opacity: 1; color: #fff; }
-
-        /* Input Area */
-        .input-zone {
-            width: 100%;
-            margin: 20px 0;
-        }
-
-        input {
-            width: 100%;
-            border: none;
-            border-bottom: 2px solid var(--ink);
-            background: transparent;
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            text-align: center;
-            padding: 10px;
-            outline: none;
-            color: var(--ink);
-            text-transform: uppercase;
-        }
-
-        input::placeholder { color: #ccc; font-size: 1rem; }
-
-        /* Result Area - Đã thu nhỏ kích thước */
-        .result-zone {
-            text-align: center;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        #total {
-            font-family: 'Cinzel', serif;
-            /* Giảm kích thước font để không bị tràn */
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 5px;
-            word-wrap: break-word;
-        }
-
-        #equation {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #666;
-            min-height: 20px;
-            letter-spacing: 1px;
-            word-break: break-all; /* Ngắt dòng nếu phép tính quá dài */
-            padding: 0 10px;
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        /* Controls */
-        .controls {
-            display: flex;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
-            margin-top: 25px;
+            margin-bottom: 20px;
         }
 
-        button {
-            background: white;
-            color: black;
-            border: 2px solid black;
-            padding: 8px 20px;
+        .menorah-group { text-align: center; }
+        .row { display: flex; justify-content: space-between; padding: 0 2px; }
+        .char-unit { display: flex; flex-direction: column; align-items: center; width: 18px; }
+        .letter { font-weight: 600; font-size: 0.85rem; }
+        .num { color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.9rem; margin-top: 1px; }
+
+        .menorah-svg {
+            width: 100%; height: 35px; stroke: var(--ink);
+            stroke-width: 1; fill: none; opacity: 0.4;
+        }
+
+        .input-wrapper { margin: 15px 0; text-align: center; }
+        input {
+            width: 95%; background: transparent; border: none;
+            border-bottom: 1.5px solid var(--gold);
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            text-align: center; font-family: 'Cinzel', serif;
+            padding: 8px; outline: none; color: var(--ink);
+        }
+
+        .result-display { text-align: center; margin: 10px 0; }
+        #totalValue {
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            font-size: clamp(3rem, 15vw, 6rem); 
+            line-height: 1; margin: 5px 0;
+            text-shadow: 2px 2px 0px var(--parchment), 4px 4px 0px rgba(184, 134, 11, 0.1);
+            transition: transform 0.1s ease-out;
+            display: inline-block;
         }
 
-        button:hover {
-            background: black;
-            color: white;
+        #breakdown {
+            margin-top: 5px; font-size: 0.8rem; color: #777;
+            min-height: 1.2em; max-width: 90%; margin-left: auto;
+            margin-right: auto; overflow-wrap: break-word;
         }
 
+        .btn-group { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        button {
+            background: var(--ink); color: var(--parchment);
+            border: 1px solid var(--ink); padding: 8px 20px;
+            font-family: 'Cinzel', serif; cursor: pointer;
+            transition: 0.3s; font-size: 0.75rem; letter-spacing: 1px;
+        }
+        button:hover { background: transparent; color: var(--ink); }
+
+        footer { margin-top: 20px; font-size: 0.7rem; color: #aaa; text-align: center; }
     </style>
 </head>
 <body>
 
-<div class="sacred-seal"></div>
-
 <div class="container">
-    <header>
-        <h1>My English Gematria</h1>
-        <div class="subtitle">VIBRATION</div>
-    </header>
+    <div class="content-wrap">
+        <h1>Gematria The Cipher</h1>
+        <p class="subtitle">Sacred Mathematical Harmony</p>
 
-    <div class="grid-wrapper">
-        <div class="grid-system" id="grid">
+        <div class="cipher-grid">
+            <div class="menorah-group">
+                <div class="row">
+                    <div class="char-unit"><span>A</span><span class="num">1</span></div>
+                    <div class="char-unit"><span>B</span><span class="num">2</span></div>
+                    <div class="char-unit"><span>C</span><span class="num">3</span></div>
+                    <div class="char-unit"><span>D</span><span class="num">4</span></div>
+                    <div class="char-unit"><span>E</span><span class="num">5</span></div>
+                    <div class="char-unit"><span>F</span><span class="num">6</span></div>
+                    <div class="char-unit" style="color:var(--gold)"><span>G</span><span class="num">7</span></div>
+                    <div class="char-unit"><span>H</span><span class="num">6</span></div>
+                    <div class="char-unit"><span>I</span><span class="num">5</span></div>
+                    <div class="char-unit"><span>J</span><span class="num">4</span></div>
+                    <div class="char-unit"><span>K</span><span class="num">3</span></div>
+                    <div class="char-unit"><span>L</span><span class="num">2</span></div>
+                    <div class="char-unit"><span>M</span><span class="num">1</span></div>
+                </div>
+                <svg class="menorah-svg" viewBox="0 0 300 60">
+                    <path d="M10,0 Q150,110 290,0" /><path d="M35,0 Q150,85 265,0" /><path d="M60,0 Q150,65 240,0" />
+                    <line x1="150" y1="0" x2="150" y2="60" stroke-width="2" />
+                </svg>
             </div>
-    </div>
 
-    <div class="input-zone">
-        <input type="text" id="userInput" placeholder="TYPE..." autocomplete="off" oninput="handleInput()">
-    </div>
+            <div class="menorah-group">
+                <div class="row">
+                    <div class="char-unit"><span>N</span><span class="num">1</span></div>
+                    <div class="char-unit"><span>O</span><span class="num">2</span></div>
+                    <div class="char-unit"><span>P</span><span class="num">3</span></div>
+                    <div class="char-unit"><span>Q</span><span class="num">4</span></div>
+                    <div class="char-unit"><span>R</span><span class="num">5</span></div>
+                    <div class="char-unit"><span>S</span><span class="num">6</span></div>
+                    <div class="char-unit" style="color:var(--gold)"><span>T</span><span class="num">7</span></div>
+                    <div class="char-unit"><span>U</span><span class="num">6</span></div>
+                    <div class="char-unit"><span>V</span><span class="num">5</span></div>
+                    <div class="char-unit"><span>W</span><span class="num">4</span></div>
+                    <div class="char-unit"><span>X</span><span class="num">3</span></div>
+                    <div class="char-unit"><span>Y</span><span class="num">2</span></div>
+                    <div class="char-unit"><span>Z</span><span class="num">1</span></div>
+                </div>
+                <svg class="menorah-svg" viewBox="0 0 300 60">
+                    <path d="M10,0 Q150,110 290,0" /><path d="M35,0 Q150,85 265,0" /><path d="M60,0 Q150,65 240,0" />
+                    <line x1="150" y1="0" x2="150" y2="60" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
 
-    <div class="result-zone">
-        <div id="total">0</div>
-        <div id="equation"></div>
-    </div>
+        <div class="input-wrapper">
+            <input type="text" id="userInput" placeholder="TYPE WORDS" autocomplete="off" oninput="handleInput()">
+        </div>
 
-    <div class="controls">
-        <button onclick="saveData()">Seal (Lưu)</button>
-        <button onclick="loadData()">Recall (Mở)</button>
+        <div class="result-display">
+            <p id="totalValue">0</p>
+            <div id="breakdown">Giai điệu của toán học...</div>
+        </div>
+
+        <div class="btn-group">
+            <button onclick="saveWork()">Seal (Lưu)</button>
+            <button onclick="loadWork()">Recall (Mở)</button>
+        </div>
     </div>
 </div>
 
+
+</footer>
+
 <script>
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const cipher = {};
-    const gridEl = document.getElementById('grid');
-
-    // Tạo bảng mã
-    alphabet.split('').forEach((char, index) => {
-        cipher[char] = index + 1;
-        const div = document.createElement('div');
-        div.className = 'cell';
-        div.id = `cell-${char}`;
-        div.innerHTML = `<span class="char">${char}</span><span class="val">${index + 1}</span>`;
-        gridEl.appendChild(div);
-    });
-
-    // Audio Setup
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
-    
-    // Sounds
+
+    const cipher = {
+        'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':6, 'I':5, 'J':4, 'K':3, 'L':2, 'M':1,
+        'N':1, 'O':2, 'P':3, 'Q':4, 'R':5, 'S':6, 'T':7, 'U':6, 'V':5, 'W':4, 'X':3, 'Y':2, 'Z':1
+    };
+
+    // Chuỗi tần số yêu cầu
     const tones = [527, 612, 758];
     let toneIndex = 0;
 
@@ -294,94 +236,81 @@
         osc.stop(audioCtx.currentTime + 0.4);
     }
 
-    // Âm thanh xóa: 
     function playDeleteSound() {
         initAudio();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(482, audioCtx.currentTime); 
-
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
-
+        osc.frequency.setValueAtTime(482, audioCtx.currentTime); // Tần số xóa 482Hz
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.2);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.25);
+        osc.stop(audioCtx.currentTime + 0.2);
     }
 
-    let lastVal = "";
+    let lastLength = 0;
 
     function handleInput() {
         const input = document.getElementById('userInput');
         const str = input.value.toUpperCase();
-
-        // Reset highlight
-        document.querySelectorAll('.cell').forEach(c => c.classList.remove('active'));
-
-        // Logic Highlight và Âm thanh
-        if (str.length > lastVal.length) {
-            // Lấy ký tự cuối cùng vừa gõ
-            const lastChar = str.charAt(str.length - 1); // SỬA LỖI Ở ĐÂY
-            
-            // Highlight và âm thanh cho ký tự chữ cái
-            if (cipher[lastChar]) {
+        
+        if (str.length > lastLength) {
+            const lastChar = str.charAt(str.length - 1);
+            // Phát âm thanh gõ nếu là chữ hoặc số
+            if (cipher[lastChar] || !isNaN(parseInt(lastChar))) {
                 playNextTone();
-                const cell = document.getElementById(`cell-${lastChar}`);
-                if(cell) cell.classList.add('active');
             }
-        } else if (str.length < lastVal.length) {
-            // Phát âm thanh xóa
+        } else if (str.length < lastLength) {
             playDeleteSound();
         }
-
-        // Logic highlight lại toàn bộ chuỗi hiện có (để giữ trạng thái sáng)
-        // Nếu bạn chỉ muốn sáng ký tự vừa gõ thì bỏ đoạn loop này đi.
-        // Nhưng thường Gematria tools hay highlight tất cả các chữ đang có trong input.
-        // Ở đây tôi làm theo cách: Chỉ highlight ký tự VỪA GÕ (theo phong cách tối giản).
         
-        lastVal = str;
+        lastLength = str.length;
         calculate(str);
     }
 
-    // HÀM TÍNH TOÁN
     function calculate(str) {
         let total = 0;
-        let equation = [];
+        let details = [];
         
-        // Regex tìm chữ cái hoặc cụm số
+        // Regex tìm chữ cái hoặc cụm số liên tiếp
         const matches = str.match(/[A-Z]|[\d]+/g);
 
         if (matches) {
             matches.forEach(part => {
                 if (cipher[part]) {
                     total += cipher[part];
-                    equation.push(cipher[part]);
+                    details.push(cipher[part]);
                 } else if (!isNaN(parseInt(part))) {
                     const numVal = parseInt(part);
                     total += numVal;
-                    equation.push(numVal);
+                    details.push(numVal);
                 }
             });
         }
+        
+        const totalEl = document.getElementById('totalValue');
+        totalEl.innerText = total;
+        
+        // Hiệu ứng nảy nhẹ khi số thay đổi
+        totalEl.style.transform = "scale(1.05)";
+        setTimeout(() => totalEl.style.transform = "scale(1)", 50);
 
-        document.getElementById('total').innerText = total;
-        document.getElementById('equation').innerText = equation.length > 0 ? equation.join(" + ") : "";
+        document.getElementById('breakdown').innerText = details.length > 0 ? details.join(" + ") : "Giai điệu của toán học...";
     }
 
-    function saveData() {
-        localStorage.setItem('my_english_gematria', document.getElementById('userInput').value);
-        alert("Đã lưu.");
+    function saveWork() {
+        localStorage.setItem('gematria_cipher_vibration', document.getElementById('userInput').value);
+        alert("Seal: Dữ liệu đã được phong ấn.");
     }
 
-    function loadData() {
-        const data = localStorage.getItem('my_english_gematria');
-        if (data) {
-            document.getElementById('userInput').value = data;
-            lastVal = data;
-            calculate(data.toUpperCase());
+    function loadWork() {
+        const saved = localStorage.getItem('gematria_cipher_vibration');
+        if (saved) {
+            document.getElementById('userInput').value = saved;
+            lastLength = saved.length;
+            calculate(saved.toUpperCase());
         }
     }
 </script>
